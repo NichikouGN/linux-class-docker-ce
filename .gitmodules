@@ -1,0 +1,8 @@
+[submodule "ticket-box-backend"]
+	path = ticket-box-backend
+	url = https://github.com/NichikouGN/ticket-box-backend.git
+	branch = linux-class
+[submodule "ticket-box-web"]
+	path = ticket-box-web
+	url = https://github.com/NichikouGN/ticket-box-web.git
+	branch = linux-class
