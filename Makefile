@@ -4,14 +4,16 @@ demo-1:
 	@echo -e "\033[1;32mDemo 1: Comparing between single and multi-stage builds\n\033[0m"
 
 	@echo -e "\033[1;32m1. Build the single-stage image and compare the disk usage\033[0m"
-	docker compose -f compose.single.yml --progress quiet build ticket-box-frontend 
-	@ docker images | grep ticket-box-frontend
+	docker compose -f compose.single.yml build ticket-box-frontend 
+	@echo -e "\033[1;34mIMAGE        					 ID    	   	DISK  CONTENT SIZE\033[0m"
+	@docker images | grep ticket-box-frontend | awk '{printf "%s %s \033[1;32m %s \033[0m %s\n", $$1, $$2, $$3, $$4}'
 
 	@echo -e "\n\n"
 
 	@echo -e "\033[1;32m2. Build the multi-stage image and compare the disk usage\033[0m"
-	docker compose -f compose.multi.yml --progress quiet build ticket-box-frontend
-	@docker images | grep ticket-box-frontend
+	docker compose -f compose.multi.yml build ticket-box-frontend
+	@echo -e "\033[1;34mIMAGE        					 ID    	   	DISK  CONTENT SIZE\033[0m"
+	@docker images | grep ticket-box-frontend | awk '{printf "%s %s \033[1;32m %s \033[0m %s\n", $$1, $$2, $$3, $$4}'
 	
 # For Demo 2
 build-clean:

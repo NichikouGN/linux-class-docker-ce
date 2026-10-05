@@ -24,13 +24,16 @@ make --version
 
 ### Create Parent Directory and Clone Repositories
 
-- First make a parent directory, in here both the backend and frontend directories will be cloned.
-- Clone the backend and frontend repositories into the parent directory.
+- Clone the repositories from the following command
 
 ```bash
-git clone -b linux-class git@github.com:NichikouGN/ticket-box-backend.git
+git clone --recurse-submodules git@github.com:NichikouGN/linux-class-docker-ce.git
+```
 
-git clone -b linux-class git@github.com:NichikouGN/ticket-box-web.git
+- If you have already cloned the repository without the `--recurse-submodules` flag, you can run the following command to initialize and update the submodules:
+
+```bash
+git submodule update --init --recursive
 ```
 
 ### Initialize the backend and frontend repositories
@@ -39,29 +42,6 @@ git clone -b linux-class git@github.com:NichikouGN/ticket-box-web.git
 
 ```bash
 npm install
-```
-
-### Get the compose files
-
-- Download the docker-compose files and the .env files from the Zalo group chat and put it in the parent directory.
-- At the parent directory, also create a .dockerignore file with the following content:
-
-```
-node_modules
-dist
-.git
-```
-
-- At this point, the parent directory should look like this:
-
-```
-parent-directory/
-├── compose.single.yml
-├── compose.multi.yml
-├── .dockerignore
-├── Makefile
-├── ticket-box-backend/
-└── ticket-box-web/
 ```
 
 ### Get the .env files
